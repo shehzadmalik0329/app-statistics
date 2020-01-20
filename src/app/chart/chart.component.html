@@ -1,0 +1,14 @@
+<div>
+  <input placeholder="Type to search..." [(ngModel)]="message">
+
+  <button (click)="searchTweetStat()">Search</button>
+</div>
+<div *ngIf=selectChart>
+<!-- <p *ngFor="let stat of trendingTweetStat"> {{ stat }} </p> -->
+    <canvas baseChart
+    [data]="pieChartData"
+    [labels]="pieChartLabels"
+    [chartType]="pieChartType"
+    (chartHover)="chartHovered($event)"
+    (chartClick)="chartClicked($event)"></canvas>
+</div>

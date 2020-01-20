@@ -1,0 +1,28 @@
+<p>
+    Select Country and City to find most trending tweets!!!
+  </p>
+    
+  <label>Country:</label>
+  <select [(ngModel)]="selectedCountry" (change)="onSelectCountry($event.target.value)">
+    <option *ngFor="let country of countries" value= {{country}}>{{country}}</option>
+  </select>
+  
+  <br/><br/>
+  
+  <div>
+    <label>City:</label>
+    <select (change)="onSelectState($event.target.value)">
+    <option value="0">Select</option>
+    <option *ngFor="let city of cities " value= {{city}}>{{city}}</option>
+  </select>
+  </div>
+  
+  <br/><br/>
+  <div class="container">
+      <div *ngIf="tweets?.length > 0">
+          <ol>
+            <li *ngFor="let tweet of tweets; let ind = index" [attr.data-index]="ind" (click)="selectedTrendingTweet(tweet)" class="trendings">{{tweet}}
+            </li>
+          </ol>
+        </div>
+  </div>
